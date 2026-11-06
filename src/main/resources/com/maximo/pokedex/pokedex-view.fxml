@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.maximo.pokedex.controller.PokedexController"
+      spacing="12.0"
+      prefHeight="680.0"
+      prefWidth="900.0">
+
+    <padding>
+        <Insets top="18.0" right="18.0" bottom="18.0" left="18.0"/>
+    </padding>
+
+    <Label text="Pokédex de Cartas"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10.0" vgap="9.0">
+        <columnConstraints>
+            <ColumnConstraints minWidth="150.0" prefWidth="150.0"/>
+            <ColumnConstraints minWidth="200.0" prefWidth="240.0"/>
+            <ColumnConstraints minWidth="150.0" prefWidth="150.0"/>
+            <ColumnConstraints minWidth="200.0" prefWidth="240.0"/>
+        </columnConstraints>
+
+        <Label text="Categoría:"
+               GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="categoriaComboBox" maxWidth="Infinity"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Nombre:"
+               GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <TextField fx:id="nombreField" promptText="Ej: Pikachu"
+                   GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+        <Label text="Año de edición:"
+               GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="anioField" promptText="Entre 1996 y 2026"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Cantidad:"
+               GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <TextField fx:id="cantidadField" promptText="Mayor que cero"
+                   GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+        <Label text="Tipo elemental:"
+               GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="tipoElementalField" promptText="Solo para Pokémon"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Brillante:"
+               GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        <CheckBox fx:id="brillanteCheckBox" text="Sí"
+                  GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+        <Label text="Evolución activa:"
+               GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <CheckBox fx:id="evolucionActivaCheckBox" text="Sí"
+                  GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Energía (pts):"
+               GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+        <TextField fx:id="cantidadEnergiaField" promptText="Solo para Energía"
+                   GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+    </GridPane>
+
+    <HBox spacing="10.0">
+        <Button fx:id="registrarButton" text="Registrar" onAction="#registrarCarta"/>
+        <Button fx:id="eliminarButton" text="Eliminar" onAction="#eliminarCarta"/>
+    </HBox>
+
+    <Label fx:id="mensajeLabel" text="" wrapText="true"/>
+
+    <TableView fx:id="cartasTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="categoriaColumn" text="Categoría" prefWidth="100.0"/>
+            <TableColumn fx:id="nombreColumn" text="Nombre" prefWidth="160.0"/>
+            <TableColumn fx:id="anioColumn" text="Año" prefWidth="90.0"/>
+            <TableColumn fx:id="cantidadColumn" text="Cantidad" prefWidth="100.0"/>
+            <TableColumn fx:id="valorColumn" text="Valor estimado" prefWidth="160.0"/>
+        </columns>
+    </TableView>
+
+</VBox>
